@@ -3,6 +3,17 @@ import Card from '../components/card'
 import FromGrop from '../components/form-group'
 
 class Login extends React.Component {
+
+  state = {
+    email: '',
+    senha: ''
+  }
+
+  entrar = () => {
+    console.log('email', this.state.email);
+    console.log('senha', this.state.senha);
+  }
+
   render() {
     return (
       <div className="container">
@@ -16,12 +27,18 @@ class Login extends React.Component {
                       <fieldset>
                         <FromGrop label="Email" htmlFor="examlpleInputEmail">
                           <input type="email" className="form-control" id="exampleInputEmail1"
-                               aria-describedby="emailHelp" placeholder="Digite o Email"/>
+                              value={this.state.email}
+                              onChange={e => this.setState({email: e.target.value})}
+                              aria-describedby="emailHelp" placeholder="Digite o Email"/>
                         </FromGrop>
                         <FromGrop label="senha" htmlFor="">
                           <input type="password" className="form-control" 
+                              value={this.state.senha}
+                              onChange={e => this.setState({senha: e.target.value})}
                               id="exampleInputPassword1" placeholder="Password"/>
                         </FromGrop>
+                        <button onClick={this.entrar} className="btn btn-success">Entrar</button>
+                        <button className="btn btn-danger">Cadastrar</button>
                       </fieldset>
                     </div>
                   </div>

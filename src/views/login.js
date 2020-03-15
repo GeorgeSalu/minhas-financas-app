@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '../components/card'
 import FromGrop from '../components/form-group'
+import {withRouter} from 'react-router-dom'
 
 class Login extends React.Component {
 
@@ -12,6 +13,10 @@ class Login extends React.Component {
   entrar = () => {
     console.log('email', this.state.email);
     console.log('senha', this.state.senha);
+  }
+
+  prepareCadastrar = () => {
+    this.props.history.push('/cadastro-usuarios')
   }
 
   render() {
@@ -38,7 +43,7 @@ class Login extends React.Component {
                               id="exampleInputPassword1" placeholder="Password"/>
                         </FromGrop>
                         <button onClick={this.entrar} className="btn btn-success">Entrar</button>
-                        <button className="btn btn-danger">Cadastrar</button>
+                        <button className="btn btn-danger" onClick={this.prepareCadastrar}>Cadastrar</button>
                       </fieldset>
                     </div>
                   </div>
@@ -52,4 +57,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+export default withRouter( Login )

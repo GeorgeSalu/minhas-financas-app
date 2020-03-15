@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBarItem from './navbarItem'
 
 function NavBar() {
   return (
@@ -11,19 +12,11 @@ function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-            <a className="nav-link" href="home.html">Home</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="usuarios.html">Usuários</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="lancamentos.html">Lançamentos</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="login.html">Login</a>
-          </li>
+        <ul className="navbar-nav">
+          <NavBarItem href="#/" label="Home" />
+          <NavBarItem href="#/cadastro-usuarios" label="usuario" />
+          <NavBarItem href="#/" label="Lancamentos" />
+          <NavBarItem href="#/login" label="Login" />
         </ul>
 
         </div>

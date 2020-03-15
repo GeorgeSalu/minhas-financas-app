@@ -1,6 +1,8 @@
 import React from 'react'
 import UsuarioService from '../app/service/usuarioService'
 
+import LocalStorageService from '../app/service/localstorageService'
+
 class Home extends React.Component {
 
   state = {
@@ -13,8 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    const usuarioLogadoString = localStorage.getItem('_usuario_logado')
-    const usuarioLogado = JSON.parse(usuarioLogadoString);
+    const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
 
     this.usuarioService.obterSaldoPorUsuario(usuarioLogado.id)
       .then(response => {

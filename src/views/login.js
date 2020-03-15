@@ -22,10 +22,12 @@ class Login extends React.Component {
         this.props.history.push('/home')
       })
       .catch(erro => {
+        console.log('entrou no erro')
         this.setState({
           mensagemErro: erro.response.data
         })
       })
+      console.log('executando a requisição')
   }
 
   prepareCadastrar = () => {

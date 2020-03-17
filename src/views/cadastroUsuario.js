@@ -19,6 +19,20 @@ class CadastroUsuario extends React.Component {
     this.service = new UsuarioService();
   }
 
+  validar() {
+    const msgs = []
+
+    if(!this.state.nome) {
+      msgs.push('O campo Nome é obrigatorio')
+    }
+
+    if(!this.state.email) {
+      msgs.push('O campo Email é obrigatorio')
+    } else if(!this.state.email.match(''))
+
+    return msgs;
+  }
+
   cadastrar = () => {
     const usuario = {
       nome: this.state.nome,

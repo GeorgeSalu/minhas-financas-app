@@ -45,7 +45,7 @@ class ConsultaLancamentos extends React.Component {
                 <SelectMenu lista={meses} className="form-control" />
               </FormGroup>
 
-              <FormGroup htmlFor="inputTipo" label="Tipo:">
+              <FormGroup htmlFor="inputTipo" label="Tipo Lancamento:">
                 <SelectMenu lista={tipos} className="form-control" />
               </FormGroup>
             </div>

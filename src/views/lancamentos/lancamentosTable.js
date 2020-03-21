@@ -2,9 +2,9 @@ import React from 'react'
 
 export default props => {
 
-  const rows = props.lancamentos.map(lancamento => {
+  const rows = props.lancamentos.map((lancamento, index) => {
     return (
-      <tr>
+      <tr key={index}>
         <td>{lancamento.descricao}</td>
         <td>{lancamento.valor}</td>
         <td>{lancamento.tipo}</td>
@@ -29,7 +29,7 @@ export default props => {
           <th scope="col">Ações</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         {rows}
       </tbody>
     </table>

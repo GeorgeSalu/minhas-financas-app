@@ -6,6 +6,17 @@ import SelectMenu from '../../components/selectMenu'
 import LancamentosTable from './lancamentosTable'
 
 class ConsultaLancamentos extends React.Component {
+
+  state = {
+    ano: '',
+    mes: '',
+    tipo: ''
+  }
+
+  buscar = () => {
+    console.log(this.state)
+  }
+
   render() {
     const meses = [
       { label: 'Selecione....', value: '' },
@@ -42,19 +53,31 @@ class ConsultaLancamentos extends React.Component {
                 <input type="text"
                        className="form-control"
                        id="inputAno"
-                       aria-describedby="emailHelp"
+                       value={this.state.ano}
+                       onChange={e => this.setState({ ano: e.target.value })}
                        placeholder="Digite o Ano"/>
               </FormGroup>
 
               <FormGroup htmlFor="inputMes" label="Mes:">
-                <SelectMenu lista={meses} className="form-control" />
+                <SelectMenu 
+                        id="inputMes"
+                        value={this.state.mes}
+                        onChange={e => this.setState({ mes: e.target.value })}
+                        className="form-control"
+                        lista={meses} 
+                       />
               </FormGroup>
 
               <FormGroup htmlFor="inputTipo" label="Tipo Lancamento:">
-                <SelectMenu lista={tipos} className="form-control" />
+                <SelectMenu 
+                        id="inputTipo"
+                        value={this.state.tipo}
+                        onChange={e => this.setState({ tipo: e.target.value })}
+                        className="form-control" 
+                        lista={tipos} />
               </FormGroup>
 
-              <button type="button" className="btn btn-success">Buscar</button>
+              <button onClick={this.buscar} type="button" className="btn btn-success">Buscar</button>
               <button type="button" className="btn btn-danger">Cadastrar</button>
             </div>
           </div>

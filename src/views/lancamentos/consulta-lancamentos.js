@@ -30,11 +30,11 @@ class ConsultaLancamentos extends React.Component {
       tipo: this.state.tipo,
       usuario: usuarioLogado.id
     }
-    console.log(lancamentoFiltro)
+    
     this.service
       .consultar(lancamentoFiltro)
       .then(resposta => {
-        console.log(resposta.data)
+        
         this.setState({ lancamentos: resposta.data })
       })
       .catch(error => {

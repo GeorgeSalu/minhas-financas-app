@@ -5,16 +5,12 @@ import CadastroUsuario from '../views/cadastroUsuario'
 import Home from '../views/home'
 import ConsultaLancamento from '../views/lancamentos/consulta-lancamentos'
 import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos'
-
-
-const isUsuarioAutenticado = () => {
-  return true;
-}
+import AuthService from '../app/service/authService'
 
 function RotaAutenticada({ component: Component, ...props }) {
   return (
     <Route {...props} render={(componentProps) => {
-      if(isUsuarioAutenticado()) {
+      if(AuthService.isUsuarioAutenticado()) {
         return (
           <Component {...componentProps} />
         )

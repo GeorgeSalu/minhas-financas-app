@@ -13,15 +13,22 @@ export default props => {
         <td>{lancamento.status}</td>
         <td>
           <button onClick={e => props.alterarStatus(lancamento, 'EFETIVADO')}
+                disabled={lancamento.status !== 'PENDENTE'}
                 type="button"
                 className="btn btn-success">
-                  Efetivar
+                  <i className="pi pi-check"></i>
+          </button>
+          <button onClick={e => props.alterarStatus(lancamento, 'CANCELADO')}
+                disabled={lancamento.status !== 'PENDENTE'}
+                type="button"
+                className="btn btn-success">
+                  <i className="pi pi-times"></i>
           </button>
           <button type="button" className="btn btn-primary" onClick={e => props.editarAction(lancamento)}>
-            Editar
+            <i className="pi pi-pencil"></i>
           </button>
           <button type="button" className="btn btn-danger" onClick={e => props.deleteAction(lancamento)}>
-            Deletar
+            <i className="pi pi-trash"></i>
           </button>
         </td>
       </tr>

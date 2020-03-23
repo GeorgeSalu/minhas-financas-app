@@ -41,10 +41,11 @@ class CadastroLancamentos extends React.Component {
   }
 
   submit = () => {
+    
     const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
-
+    
     const { descricao, valor, mes, ano, tipo } = this.state;
-
+    
     const lancamento = {
       descricao,
       valor,
@@ -53,6 +54,17 @@ class CadastroLancamentos extends React.Component {
       tipo,
       usuario: usuarioLogado.id
     }
+    
+    try{
+      this.service.validar(lancamento)
+    }catch(erro) {
+      const mensagens = erro.mensagens
+      mensagens.forEach(msg => {
+        messages.mensagemErro(msg)
+      })
+      return false
+    }
+
 
     this.service
         .salvar(lancamento)

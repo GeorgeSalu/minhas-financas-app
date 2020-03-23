@@ -1,10 +1,11 @@
 import React from 'react'
-import {Route, Switch, HashRouter} from 'react-router-dom'
+import {Route, Switch, HashRouter, Redirect} from 'react-router-dom'
 import Login from '../views/login'
 import CadastroUsuario from '../views/cadastroUsuario'
 import Home from '../views/home'
 import ConsultaLancamento from '../views/lancamentos/consulta-lancamentos'
 import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos'
+
 
 const isUsuarioAutenticado = () => {
   return false;
@@ -16,6 +17,10 @@ function RotaAutenticada({ component: Component, ...props }) {
       if(isUsuarioAutenticado()) {
         return (
           <Component {...componentProps} />
+        )
+      }else {
+        return (
+          <Redirect to={{pathname: '/login', state: {from: componentProps.location}}} />
         )
       }
     }}></Route>

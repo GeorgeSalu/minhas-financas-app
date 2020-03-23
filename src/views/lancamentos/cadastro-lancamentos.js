@@ -78,7 +78,7 @@ class CadastroLancamentos extends React.Component {
         <div className="row">
           <div className="col-md-4">
             <FormGroup id="inputValor" label="Valor: ">
-              <SelectMenu id="inputValor" 
+              <input id="inputValor" 
                           type="text"
                           name="valor"
                           value={this.state.valor}

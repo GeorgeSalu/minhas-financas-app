@@ -63,8 +63,12 @@ class Login extends React.Component {
                               onChange={e => this.setState({senha: e.target.value})}
                               id="exampleInputPassword1" placeholder="Password"/>
                         </FromGrop>
-                        <button onClick={this.entrar} className="btn btn-success">Entrar</button>
-                        <button className="btn btn-danger" onClick={this.prepareCadastrar}>Cadastrar</button>
+                        <button onClick={this.entrar} className="btn btn-success">
+                          <i className="pi pi-sign-in"></i>  Entrar
+                        </button>
+                        <button className="btn btn-danger" onClick={this.prepareCadastrar}>
+                          <i className="pi pi-plus"></i>  Cadastrar
+                        </button>
                       </fieldset>
                     </div>
                   </div>

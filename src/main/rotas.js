@@ -8,7 +8,7 @@ import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos'
 
 
 const isUsuarioAutenticado = () => {
-  return false;
+  return true;
 }
 
 function RotaAutenticada({ component: Component, ...props }) {

@@ -17,7 +17,8 @@ class CadastroLancamentos extends React.Component {
     ano: '',
     tipo: '',
     status: '',
-    usuario: null
+    usuario: null,
+    atualizando: false
   }
 
   constructor() {
@@ -30,7 +31,7 @@ class CadastroLancamentos extends React.Component {
     if(params.id) {
       this.service.obterPorId(params.id)
             .then(response => {
-              this.setState({...response.data})
+              this.setState({...response.data, atualizando: true})
             })
             .catch(error => {
               messages.mensagemErro(error.response.data)
@@ -101,7 +102,7 @@ class CadastroLancamentos extends React.Component {
     const meses = this.service.obterListaMeses();
 
     return (
-      <Card title="Cadastro Lancamento">
+      <Card title={this.state.atualizando ? 'Atualizacao de lancamento' : 'Cadastro de lancamento'}>
         <div className="row">
           <div className="col-md-12">
             <FormGroup id="inputDescricao" label="Descricao: ">
@@ -171,8 +172,13 @@ class CadastroLancamentos extends React.Component {
         </div>
         
           <div className="row">
-            <button className="btn btn-success" onClick={this.submit}>Salvar</button>
-            <button className="btn btn-success" onClick={this.atualizar}>Atualizar</button>
+            {this.state.atualizando ?
+            (
+              <button className="btn btn-success" onClick={this.atualizar}>Atualizar</button>
+            ): (
+              <button className="btn btn-success" onClick={this.submit}>Salvar</button>
+            )
+            }
             <button className="btn btn-danger" onClick={e => this.props.history.push('/consulta-lancamentos')}>
               Cancelar
             </button>

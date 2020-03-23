@@ -6,15 +6,32 @@ import Home from '../views/home'
 import ConsultaLancamento from '../views/lancamentos/consulta-lancamentos'
 import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos'
 
+const isUsuarioAutenticado = () => {
+  return false;
+}
+
+function RotaAutenticada({ component: Component, ...props }) {
+  return (
+    <Route {...props} render={(componentProps) => {
+      if(isUsuarioAutenticado()) {
+        return (
+          <Component {...componentProps} />
+        )
+      }
+    }}></Route>
+  )
+}
+
 function Rotas() {
   return (
     <HashRouter >
       <Switch>
         <Route path="/home" component={Home } />
-        <Route path="/login" component={Login } />
         <Route path="/cadastro-usuarios" component={CadastroUsuario} />
-        <Route path="/consulta-lancamentos" component={ConsultaLancamento} />
-        <Route path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
+
+        <RotaAutenticada path="/login" component={Login } />
+        <RotaAutenticada path="/consulta-lancamentos" component={ConsultaLancamento} />
+        <RotaAutenticada path="/cadastro-lancamentos/:id?" component={CadastroLancamentos} />
       </Switch>
     </HashRouter>
   )

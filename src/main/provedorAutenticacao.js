@@ -22,10 +22,19 @@ class ProvedorAutenticacao extends React.Component {
   }
 
   render() {
+    const contexto = {
+      usuarioAutenticado: this.state.usuarioAutenticado,
+      isAutenticado: this.state.isAutenticado,
+      iniciarSessao: this.iniciarSessao,
+      encerrarSessao: this.encerrarSessao
+    }
+
     return (
-      <AuthProvider >
+      <AuthProvider value={contexto}>
         {this.props.childrens}
       </AuthProvider>
     )
   }
 }
+
+export default ProvedorAutenticacao
